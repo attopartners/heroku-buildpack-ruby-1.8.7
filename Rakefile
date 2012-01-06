@@ -1,7 +1,7 @@
 require "fileutils"
 require "tmpdir"
 
-S3_BUCKET_NAME  = "heroku-buildpack-ruby"
+S3_BUCKET_NAME  = "heroku-buildpack-ruby-1.8.7"
 VENDOR_URL      = "https://s3.amazonaws.com/#{S3_BUCKET_NAME}"
 
 def s3_tools_dir
@@ -140,7 +140,7 @@ task "ruby:install", :version do |t, args|
     Dir.chdir(tmpdir) do |dir|
       FileUtils.rm_rf("#{tmpdir}/*")
 
-      sh "curl http://ftp.ruby-lang.org/pub/ruby/1.9/#{name}.tar.gz -s -o - | tar vzxf -"
+      sh "curl http://ftp.ruby-lang.org/pub/ruby/1.8/#{name}.tar.gz -s -o - | tar vzxf -"
       FileUtils.mkdir_p("#{name}/#{usr_dir}")
       Dir.chdir("#{name}/#{usr_dir}") do
         sh "curl #{VENDOR_URL}/libyaml-0.1.4.tgz -s -o - | tar vzxf -"

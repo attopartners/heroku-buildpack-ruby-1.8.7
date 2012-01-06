@@ -83,7 +83,8 @@ private
   # fetch the ruby version from the enviroment
   # @return [String, nil] returns the ruby version if detected or nil if none is detected
   def ruby_version
-    ENV["RUBY_VERSION"]
+    #ENV["RUBY_VERSION"]
+    "1.8.7-p357"
   end
 
   # determine if we're using rbx
