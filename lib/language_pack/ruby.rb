@@ -84,7 +84,7 @@ private
   # @return [String, nil] returns the ruby version if detected or nil if none is detected
   def ruby_version
     #ENV["RUBY_VERSION"]
-    "1.8.7-p357"
+    "ruby-1.8.7-p357"
   end
 
   # determine if we're using rbx
@@ -112,7 +112,7 @@ private
 
     invalid_ruby_version_message = <<ERROR
 Invalid RUBY_VERSION specified: #{ruby_version}
-Valid versions: 1.8.7-p357
+Valid versions: ruby-1.8.7-p357
 ERROR
 
     unless ruby_version_rbx?
