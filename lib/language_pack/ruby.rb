@@ -174,8 +174,7 @@ ERROR
     FileUtils.mkdir_p(slug_vendor_base)
     Dir.chdir(slug_vendor_base) do |dir|
       gems.each do |gem|
-        puts "curl #{VENDOR_URL}/#{gem}.tgz -s -o - | tar xzf -"
-        run("curl #{VENDOR_URL}/#{gem}.tgz -s -o - | tar xzf -")
+        run("curl https://s3.amazonaws.com/heroku-buildpack-ruby/#{gem}.tgz -s -o - | tar xzf -")
       end
       Dir["bin/*"].each {|path| run("chmod 755 #{path}") }
     end
