@@ -241,7 +241,7 @@ ERROR
 
       cache_load "vendor/bundle"
 
-      version = run("env RUBYOPT=\"#{syck_hack}\" bundle version").strip
+      version = run("bundle version").strip
       topic("Installing dependencies using #{version}")
 
       bundler_output = ""
