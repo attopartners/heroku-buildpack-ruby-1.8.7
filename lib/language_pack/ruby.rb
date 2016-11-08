@@ -133,6 +133,7 @@ ERROR
     FileUtils.mkdir_p bin_dir
     run("cp #{slug_vendor_ruby}/bin/* #{bin_dir}")
     Dir["bin/*"].each {|path| run("chmod +x #{path}") }
+    run("gem install bundler")
 
     topic "Using RUBY_VERSION: #{ruby_version}"
 
