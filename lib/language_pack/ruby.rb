@@ -133,7 +133,6 @@ ERROR
     FileUtils.mkdir_p bin_dir
     run("cp #{slug_vendor_ruby}/bin/* #{bin_dir}")
     Dir["bin/*"].each {|path| run("chmod +x #{path}") }
-    run("gem install bundler")
 
     topic "Using RUBY_VERSION: #{ruby_version}"
 
@@ -172,9 +171,11 @@ ERROR
 
   # installs vendored gems into the slug
   def install_language_pack_gems
+    topic "1. #{slug_vendor_base}"
     FileUtils.mkdir_p(slug_vendor_base)
     Dir.chdir(slug_vendor_base) do |dir|
       gems.each do |gem|
+        topic "2. #{gem}"
         run("curl #{VENDOR_URL}/#{gem}.tgz -s -o - | tar xzf -")
       end
       Dir["bin/*"].each {|path| run("chmod 755 #{path}") }
